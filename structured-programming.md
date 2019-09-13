@@ -306,8 +306,6 @@ non-erroneous value if it was `Ok(_)`. Anything you can write in terms of `?` is
 just "syntactic sugar" for something you could write in terms of `match`--just
 simpler and cleaner to read and write.
 
-
-
 ### Longer Exercise: Stack Calculator
 
 Back in the day, HP used to manufacture a weird kind of calculator. Unlike the
@@ -361,8 +359,9 @@ impl Calculator {
 }
 ```
 
-Your task is to implement three methods for `Calculator`. You'll probably want
-to do them in order.
+TODO: Explain more here
+TODO: Mention Vec::push and Vec::pop
+TODO: Mention `?` works for `Option`
 
 ```rust
 impl Calculator {
