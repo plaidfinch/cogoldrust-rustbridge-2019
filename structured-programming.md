@@ -334,6 +334,7 @@ numbers:
 pub enum Button {
     Op(Operation),
     Number(i64),
+}
 ```
 
 At any given time, the calculator has an internal state: a *stack* of numbers
