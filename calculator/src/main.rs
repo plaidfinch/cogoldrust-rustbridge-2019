@@ -6,7 +6,7 @@ use CalcError::*;
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
 //   When you've solved this exercise (or while you're figuring it out),      //
-//   you can run the calculator * play with it by running `cargo run`!        //
+//   you can run the calculator & play with it by running `cargo run`!        //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
