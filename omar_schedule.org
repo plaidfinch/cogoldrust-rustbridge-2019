@@ -2,19 +2,20 @@
 |  9:00 | Why Rust Matters?                                                    |
 |  9:10 | Types: Rust primitive types, pointers, arrays, and strings.          |
 |  9:30 | Expressions: (blocks, ifs, loops,functions, typecasts, and closures) |
-| 10:00 | 20 Minute Exercise                                                   |
+| 10:00 | 20 Minute of short exercises                                         |
 | 10:20 | 10 Minute break                                                      |
 | 10:30 | Ownership (moves, Copy types)                                        |
-| 11:00 | References (lifetimes, mutations)                                    |
-| 11:40 | 20 Minute exercises                                                  |
+|       | References (lifetimes, mutations)                                    |
+| 11:40 | 20 Minute of short exercises                                         |
 | 12:00 | LUNCH                                                                |
 |  1:00 | Error Handling (panic, result, Result wrapper, '?')                  |
-|  1:30 | Structs, Enumerations, deriving, Pattern Matching                    |
-|  2:00 | 20 Minute Excercise                                                  |
-|  2:20 | Traits, Generics / Review/QA                                         |
-|  2:50 | 10 Minute Break                                                      |
+|       | Structs, Enumerations, deriving, Pattern Matching                    |
+|  2:00 | 20 Minute Excercise (calculator)                                     |
+|  2:20 | 10 Minute Break                                                      |
+|  2:30 | Traits, Generics / Review/QA                                         |
 |  3:00 | Project                                                              |
-|  3:30 | Project                                                              |
-|  4:00 | Project                                                              |
-|  4:30 | Project                                                              |
+|       | Project                                                              |
+|  4:00 | Optional stretch break / check in point                              |
+|       | Project                                                              |
+|       | Project                                                              |
 |  5:00 | Done!                                                                |
