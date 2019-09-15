@@ -8,4 +8,3 @@ edition = "2018"
 
 [dependencies]
 pancurses = "0.16"
-ctrlc = { version = "3.0", features = ["termination"] }
