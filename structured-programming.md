@@ -197,7 +197,42 @@ fn day_after(today: &Day) -> Day {
 
 ### Quick Exercise: `enum` and `match`
 
-[TODO]
+Define a function which determines the color you get when you mix two primary
+colors of paint together:
+
+```rust
+enum PrimaryColor {
+    Red,
+    Yellow,
+    Blue,
+}
+
+enum SecondaryColor {
+    Orange,
+    Green,
+    Purple,
+}
+
+enum AnyColor {
+    Primary(PrimaryColor),
+    Secondary(SecondaryColor),
+}
+
+fn mix_primary_colors(color_1: PrimaryColor, color_2: PrimaryColor) -> AnyColor {
+    // Fill in here!
+}
+```
+
+If you get frustrated with how much you're typing, hint: you can pattern-match
+on tuples of values, like:
+
+```rust
+match (x, y) {
+    (..., ...) => ...,
+    (..., ...) => ...,
+    ...
+}
+```
 
 ## Error Handling & `enum`s: `Option` and `Result`
 
