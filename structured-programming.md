@@ -306,75 +306,10 @@ non-erroneous value if it was `Ok(_)`. Anything you can write in terms of `?` is
 just "syntactic sugar" for something you could write in terms of `match`--just
 simpler and cleaner to read and write.
 
+Another note: You can use `?` with `Option` as well, and it works much the same
+way! Just keep in mind that you can't use `?` with both `Option` and `Result` in
+the same function at the same time, since the types don't match.
+
 ### Longer Exercise: Stack Calculator
 
-Back in the day, HP used to manufacture a weird kind of calculator. Unlike the
-normal calculators most of us use, you entered operations on it in "reverse
-Polish notation". This means that instead of writing `1 + 2 =`, you would write
-`1 2 +`, and the result would emerge as soon as you pressed `+`. There's no need
-for parentheses on this calculator: instead of writing `(1 + 2) * 3`, you write
-`1 2 + 3 *`.
-
-Today, let's build such a calculator. First, let's define the operations
-available:
-
-```rust
-pub enum Operation {
-    Add,
-    Sub,
-    Mul,
-    Div,
-}
-```
-
-The calculator will let us press operator buttons, but also let us enter
-numbers:
-
-```rust
-pub enum Button {
-    Op(Operation),
-    Number(i64),
-}
-```
-
-At any given time, the calculator has an internal state: a *stack* of numbers
-which have yet to be processed. This stack builds up the numbers which have been
-entered, before operations are applied to them. We'll represent this stack as a
-`Vec<i64>`.
-
-```rust
-pub struct Calculator {
-    stack: Vec<i64>,
-}
-```
-
-A new calculator has nothing on its stack:
-
-```rust
-impl Calculator {
-    pub fn new() -> Calculator {
-        Calculator {
-            stack: Vec::new()
-        }
-    }
-}
-```
-
-TODO: Explain more here
-TODO: Mention Vec::push and Vec::pop
-TODO: Mention `?` works for `Option`
-
-```rust
-impl Calculator {
-
-    /// Updates the internal state of the calculator to correspond to the given
-    /// button being pushed. Returns the current value of the calculator, or
-    /// `None` if the button was invalid.
-    pub fn push_button(&mut self, button: &Button) -> Option<i64> {
-         unimplemented!("push_button() not yet implemented")
-    }
-
-}
-```
-
-TODO: main program that parses input to calculator in a REPL
+See the rust source for details.
