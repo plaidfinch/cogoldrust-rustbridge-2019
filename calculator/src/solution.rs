@@ -1,6 +1,3 @@
-use main::Operation::{self, *};
-use main::CalcError::{self, *};
-
 pub fn press_operator(&mut self, operation: &Operation) -> Result<i64, CalcError> {
     if let Some(x) = self.stack.pop() {
         if let Some(y) = self.stack.pop() {
