@@ -10,8 +10,18 @@ use CalcError::*;
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-/// An operation on the calculator: either addition, subtraction,
-/// multiplication, or division.
+/*
+    Back in the day, HP used to manufacture a weird kind of calculator. Unlike
+    the normal calculators most of us use, you entered operations on it in
+    "reverse Polish notation". This means that instead of writing `1 + 2 =`, you
+    would write `1 2 +`, and the result would emerge as soon as you pressed `+`.
+    There's no need for parentheses on this calculator: instead of writing `(1 +
+    2) * 3`, you write `1 2 + 3 *`. Today, let's build such a calculator.
+ */
+
+/// First, let's define the operations as an enum: addition, subtraction,
+/// multiplication, and division.
+
 #[derive(Debug, Clone, Copy)]
 pub enum Operation {
     Add,
@@ -20,9 +30,13 @@ pub enum Operation {
     Div,
 }
 
-/// A calculator has internal state that stores a stack of numbers. We can
-/// access this stack by calling the `push()` and `pop()` methods of the
-/// contained `Vec`.
+
+/// At any given time, the calculator has an internal state: a *stack* of
+/// numbers which have yet to be processed. This stack builds up the numbers
+/// which have been entered, before operations are applied to them. We'll
+/// represent this stack as a `Vec<i64>`. To push and pop from the stack, we
+/// will use `Vec::push()` and Vec::pop()`.
+
 #[derive(Debug, Clone)]
 pub struct Calculator {
     stack: Vec<i64>,
@@ -31,11 +45,15 @@ pub struct Calculator {
 /// An operation on the calculator can fail in one of two ways: 1) there aren't
 /// enough numbers on its stack for an operation (all the operations need at
 /// least 2 numbers on the stack), or 2) the user tried to divide by zero.
+
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum CalcError {
     StackTooSmall,
     DivideByZero,
 }
+
+// We've defined a few methods for the `Calculator` type below. Your task is to
+// fill in the implementation of the final method, `press_operator()`.
 
 impl Calculator {
 
@@ -61,34 +79,7 @@ impl Calculator {
     /// the operation was invalid. If the operation was invalid, the internal
     /// state of the calculator should remain unchanged.
     pub fn press_operator(&mut self, operation: &Operation) -> Result<i64, CalcError> {
-        if let Some(x) = self.stack.pop() {
-            if let Some(y) = self.stack.pop() {
-                let result = match operation {
-                    Add => y + x,
-                    Mul => y * x,
-                    Sub => y - x,
-                    Div => {
-                        if x != 0 {
-                            y / x
-                        } else {
-                            // Restore the state
-                            self.stack.push(y);
-                            self.stack.push(x);
-                            return Err(DivideByZero)
-                        }
-                    },
-                };
-                self.stack.push(result);
-                Ok(result)
-            } else {
-                // If second arg isn't there, restore first arg
-                self.stack.push(x);
-                Err(StackTooSmall)
-            }
-        } else {
-            Err(StackTooSmall)
-        }
-        // unimplemented!()
+        unimplemented!()  // delete this line and implement here :)
     }
 }
 
