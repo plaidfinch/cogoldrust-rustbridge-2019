@@ -5,23 +5,39 @@ use std::path::PathBuf;
 
 use crate::commands::*;
 
+/// Represents all the possible commands that our shell can execute.
+/// Each one of these variants has a corresponding function in
+/// `commands` which does the actual work!
 #[derive(Debug, Clone)]
 pub enum ShellCommand {
+    /// Print the contents of file to screen.
     More(PathBuf),
+    /// Takes 0 or more files and concats their contents.
     Cat(Vec<PathBuf>),
+    /// Print all entries in a directory.
     Ls(PathBuf),
+    /// Change current working directory.
     Cd(PathBuf),
-    FindFile(PathBuf, PathBuf),
-    // Can take input from  pipe.
+    /// Look for file name recursively under directory.
+    FindFile(String, PathBuf),
+    /// Returns all lines that match the second string, in the
+    /// first string.
+    /// If Option is None, this command is expecting pipe input.
+    /// Can take input from  pipe.
+    /// FindString(content, matcher)
     FindString(Option<String>, String),
-
-    // Can take input from  pipe.
-    // SubsString(contents, from, to)
+    /// Replaces all instances of `from` with `to` in
+    /// contents.
+    /// Can take input from  pipe.
+    /// SubsString(contents, from, to)
     SubsString(Option<String>, String, String),
+    /// Allows output of first command to be piped into second command.
     Pipe(Box<ShellCommand>, Box<ShellCommand>),
 }
 
 impl ShellCommand {
+    /// Creates the new shell command. Returns ShellError if unable to parse command.
+    /// Possible errors:
     pub fn create_shell_command(cli_input: &str) -> Result<ShellCommand, ShellError> {
         let commands: Vec<&str> = cli_input.split('|').collect();
 
@@ -47,6 +63,7 @@ impl ShellCommand {
         make_pipe(&commands)
     }
 
+    /// Parses a single command that does not contain any pipes.
     fn parse_single_command(command: &str) -> Result<ShellCommand, ShellError> {
         // Check for pipe, reject if pipe present.
         // Check for empty strings.
@@ -59,7 +76,7 @@ impl ShellCommand {
             ["ls", path] => Ok(ShellCommand::Ls(PathBuf::from(path))),
             ["cd", path] => Ok(ShellCommand::Cd(PathBuf::from(path))),
             ["find-file", path, dir] => Ok(ShellCommand::FindFile(
-                PathBuf::from(path),
+                path.to_string(),
                 PathBuf::from(dir),
             )),
             // Find string with 2 arguments.
@@ -116,6 +133,9 @@ impl ShellCommand {
         }
     }
 
+    /// Take the command, and call the corresponding commands::function
+    /// for the command.
+    /// Handles piped commands by piping their input together.
     pub fn execute_shell_command(&self) -> Result<CommandOutput, ShellError> {
         match self {
             ShellCommand::More(path) => Ok(CommandOutput::Single(more_file(path)?)),
