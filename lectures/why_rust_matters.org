@@ -1,0 +1,82 @@
+*
+
+
+
+
+
+
+
+
+
+                              *Why Rust Matters*
+
+
+* What is Rust?
+
+  "Rust is a systems programming language that runs blazingly fast,
+   prevents segfaults, and guarantees thread safety."
+
+
+* What is Rust?
+
+  "Rust is a systems programming language that runs blazingly fast,
+   prevents segfaults, and guarantees thread safety."
+
+  Other systems languages include: C, C++, Ada, D.
+
+* What is Rust?
+
+  "Rust is a systems programming language that runs blazingly fast,
+   prevents segfaults, and guarantees thread safety."
+
+  Other systems languages include: C, C++, Ada, D.
+
+  Like C and C++, Rust gives developers fine control over the use of memory,
+  and maintains a close relationship between the primitive operations of the
+  language and those of the machines it runs on, helping developers anticipate
+  the costs (time and space) of operations.
+
+
+* Areas of Systems Programming
+
+  - Operating Systems
+  - Device Drivers
+  - Embedded Systems
+  - Real Time Systems
+  - Networking
+  - Virtualization and Containerization
+  - Scientific Computing
+  - Video Games
+
+* Why Rust?
+
+  - Fast
+  - Safe -> statically typed, and compile time checked for memory safety
+  - Concurrency
+
+
+
+* Performance
+
+    Zero Cost Abstraction!
+
+    In general, C++ implementations obey the zero-overhead principle:
+    What you don’t use, you don’t pay for.
+
+
+
+* Performance
+
+    Zero Cost Abstraction!
+
+    In general, C++ implementations obey the zero-overhead principle:
+    What you don’t use, you don’t pay for.
+
+    And further: What you do use, you couldn’t hand code any better.
+
+* Concurrency
+
+  Computers are multicore systems: [[https://www.karlrupp.net/wp-content/uploads/2015/06/35years.png][need for parallelism]].
+
+
+  Concurrency [[https://en.wikipedia.org/wiki/Therac-25][is hard]].
