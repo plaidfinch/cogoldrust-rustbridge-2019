@@ -25,11 +25,15 @@ fn main() {
 
     for line in stdin.lock().lines() {
         let user_input = line.unwrap();
-
-        // Step #20 ShellCommand functions and CommandOutput
-        // function to parse the user input, execute the command.
-        // and print it!
-        unimplemented!();
+        match ShellCommand::create_shell_command(&user_input) {
+            Ok(command) => match command.execute_shell_command() {
+                Ok(output) => output.print_command(),
+                Err(e) => println!("Error: {:?}", e),
+            },
+            Err(e) => {
+                println!("Unable to parse command: {:?}", e);
+            }
+        }
 
         print!("> ");
         io::stdout().flush().ok().expect("Could not flush stdout");

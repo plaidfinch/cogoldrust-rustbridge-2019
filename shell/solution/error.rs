@@ -18,9 +18,6 @@ pub enum ShellError {
     KnownCommandWrongArgs(String),
     /// During parsing the command was not recognized.
     UnknownCommand(String),
-
-    // Pipe commands, look at these later!
-
     /// Some command expected pipe input, but the previous command
     /// returned no input.
     ExpectedPipeInput(ShellCommand),

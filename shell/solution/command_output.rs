@@ -15,19 +15,25 @@ impl CommandOutput {
     /// `List` prints one entry per line.
     /// `None` prints nothing.
     pub fn print_command(&self) {
-        // Step #3
-        // Match on the difference variants of CommandOutput!
         match self {
-            _ => { unimplemented!() }
+            CommandOutput::Single(s) => println!("{}", s),
+            CommandOutput::List(ss) => {
+                for s in ss {
+                    println!("{}", s);
+                }
+            }
+            CommandOutput::None => {}
         }
     }
 
-    /// Converts variants into a single String.
+    /// Convers variants into a single String.
     /// `None` returns None.
     /// List concats the strings separated by a single space.
     pub fn to_string(self) -> Option<String> {
-        // Step #4
-        // Match on the difference variants of CommandOutput
-        unimplemented!()
+        match self {
+            CommandOutput::List(results) => Some(results.join(" ")),
+            CommandOutput::Single(result) => Some(result),
+            CommandOutput::None => None,
+        }
     }
 }
