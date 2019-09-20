@@ -7,7 +7,7 @@ fn sum(slice: &[i32]) -> i32 {
 
 #[test]
 fn sum_test_1(){
-    assert_eq!(sum(&[1, 2, 3, 4], 10));
+    assert_eq!(sum(&[1, 2, 3, 4]), 10);
 }
 
 // Write your own tests for sum! Run `cargo test` to run your tests.
