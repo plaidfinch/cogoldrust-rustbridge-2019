@@ -297,6 +297,28 @@ This `enum` declaration tells us that `Result` has *two* of these generic type
 parameters, `T` and `E`, where `T` is the type we want to return when all is
 well, and `E` is the type of errors that could happen.
 
+### When one case is the interesting one: `if let`
+
+Frequently, we end up caring about one particular piece of an enum and not
+caring about all the other cases it could be. If we always had to handle enums
+with `match`, this would quickly become tedious because we'd still have to have
+one match arm for each enum constructor. Luckily, we can use `if let` to express
+this. Contrast:
+
+```rust
+match some_expression {
+    None => { },
+    Some(x) => println!("{}", x),
+}
+
+if let Some(x) = some_expression {
+    println!("{}", x)
+}
+```
+
+`Option` has only two constructors, but if there were more we would see even
+more advantage.
+
 ### When Error-Handling Gets Clunky: `?`
 
 Often, we end up in a situation where we want to do a bunch of things, each of
